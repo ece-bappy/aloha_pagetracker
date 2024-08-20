@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webpage Tracker</title>
+  <style>
+    
+    button { margin-top: 10px; }
+    .main{
+      background: #EF5A6F;
+      height: 300px;
+      width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction:column;
+      border-radius: 5px;
+    }
+    .main h2{
+      color: white;
+    }
+    #trackButton, #exportButton, #importButton {
+      background: #FFF1DB;
+      height: 40px;
+      width: 270px;
+      border: none;
+      border-radius: 5px;
+
+    }
+    .lastVisit {
+      font-size: 16px;
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+    }
+    .lastVisit .date {
+      
+      color: #2196F3;
+    }
+
+    .swing-in-top-fwd{-webkit-animation:swing-in-top-fwd .5s cubic-bezier(.175,.885,.32,1.275) both;animation:swing-in-top-fwd .7s cubic-bezier(.175,.885,.32,1.275) both}
+@-webkit-keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}@keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}
+
+  </style>
+</head>
+<body>
+  <div class="main swing-in-top-fwd">
+  <h1>Certificate Print Tracker</h1>
+
+  <div id="lastVisit" class="lastVisit"></div>
+
+
+  <button id="trackButton">Menual Save</button>
+  <button id="exportButton">Export Data</button>
+  <input type="file" id="importInput" style="display: none;">
+  <button id="importButton">Import Data</button>
+</div>
+  <script src="popup.js"></script>
+</body>
+</html>
