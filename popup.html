@@ -7,8 +7,8 @@
     button { margin-top: 10px; }
     .main{
       background: #EF5A6F;
-      height: 300px;
-      width: 300px;
+      height: 400px;
+      width: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -24,8 +24,16 @@
       width: 270px;
       border: none;
       border-radius: 5px;
+      font-size: 17px;
+      transition: all .5s;
+
 
     }
+
+    #trackButton:hover, #exportButton:hover, #importButton:hover{
+      background-color: #ff8494;
+    }
+
     .lastVisit {
       font-size: 16px;
       margin-bottom: 15px;
@@ -38,8 +46,21 @@
       color: #2196F3;
     }
 
-    .swing-in-top-fwd{-webkit-animation:swing-in-top-fwd .5s cubic-bezier(.175,.885,.32,1.275) both;animation:swing-in-top-fwd .7s cubic-bezier(.175,.885,.32,1.275) both}
+    .swing-in-top-fwd{-webkit-animation:swing-in-top-fwd .5s cubic-bezier(.175,.885,.32,1.275) both;animation:swing-in-top-fwd .8s cubic-bezier(.175,.885,.32,1.275) both}
 @-webkit-keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}@keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}
+
+.deleteButton {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .deleteButton:hover {
+      background-color: #d32f2f;
+    }
 
   </style>
 </head>

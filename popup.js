@@ -1,4 +1,3 @@
-// popup.js
 document.addEventListener('DOMContentLoaded', function() {
   const trackButton = document.getElementById('trackButton');
   const exportButton = document.getElementById('exportButton');
@@ -10,10 +9,22 @@ document.addEventListener('DOMContentLoaded', function() {
     chrome.storage.local.get(url, function(data) {
       if (data[url]) {
         const date = new Date(data[url]).toLocaleString();
-        lastVisitDiv.innerHTML = `Last Print On <span class="date">${date}</span>`;
+        lastVisitDiv.innerHTML = `
+          <div>Last Printed On: <span class="date">${date}</span></div>
+          <button class="deleteButton" id="deleteButton">Delete</button>
+        `;
+        document.getElementById('deleteButton').addEventListener('click', function() {
+          deleteRecord(url);
+        });
       } else {
         lastVisitDiv.innerHTML = '<span class="date">Not Printed Yet</span>';
       }
+    });
+  }
+
+  function deleteRecord(url) {
+    chrome.storage.local.remove(url, function() {
+      updateLastVisit(url);
     });
   }
 
@@ -78,4 +89,25 @@ document.addEventListener('DOMContentLoaded', function() {
       reader.readAsText(file);
     }
   });
+
+  // Add this line at the end of the DOMContentLoaded event listener
+chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+  checkAndNotify(tabs[0].url);
 });
+});
+
+
+function checkAndNotify(url) {
+  chrome.storage.local.get(url, (result) => {
+    if (result[url]) {
+      const visitDate = new Date(result[url]).toLocaleString();
+      chrome.notifications.create({
+        type: 'basic',
+        iconUrl: 'icon48.png', // Make sure to add this icon to your extension folder
+        title: 'Certificate Printed Earlier',
+        message: `Last Printed On: ${visitDate}`
+      });
+    }
+  });
+}
+
